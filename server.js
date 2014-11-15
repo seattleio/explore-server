@@ -9,6 +9,8 @@ var server = require('flatsheet-server')({
   db: __dirname + '/data/db'
 });
 
+var serverViews = __dirname + '/views/server/';
+server.addView('sheet-map.html', serverViews);
 
 /*
 * Create the root route
