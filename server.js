@@ -30,6 +30,31 @@ server.route('/', function (req, res) {
 
 
 /*
+* Create the sheet map route
+*/
+
+server.route('/sheet/map/:id', function (req, res, opts) {
+  server.sheets.fetch(opts.params.id, function (err, sheet) {
+    if (err) {
+      res.writeHead(302, { 'Location': '/' });
+      return res.end();
+    }
+
+    var headers = [];
+
+    sheet.rows.forEach(function (row) {
+      Object.keys(row).forEach( function (name) {
+        if (headers.indexOf(name) < 0) headers.push(name);
+      });
+    });
+
+    var ctx = { account: res.account, sheet: sheet, headers: headers };
+    return response().html(server.render('sheet-map', ctx)).pipe(res);
+  });
+});
+
+
+/*
 * Start the server
 */
 
