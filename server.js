@@ -1,16 +1,17 @@
 var response = require('response');
 var server = require('flatsheet-server')({
   site: {
-    title: 'flatsheet',
-    email: 'hi@example.com',
+    title: 'Explore.js',
+    email: 'hi@seattle.io',
     url: 'http://127.0.0.1:3333',
-    contact: 'your full name'
+    contact: 'Seth Vincent'
   },
   db: __dirname + '/data/db'
 });
 
 var serverViews = __dirname + '/views/server/';
 server.addView('sheet-map.html', serverViews);
+
 
 /*
 * Create the root route
@@ -40,17 +41,7 @@ server.route('/sheet/map/:id', function (req, res, opts) {
     if (err) {
       res.writeHead(302, { 'Location': '/' });
       return res.end();
-    }
-
-    var headers = [];
-
-    sheet.rows.forEach(function (row) {
-      Object.keys(row).forEach( function (name) {
-        if (headers.indexOf(name) < 0) headers.push(name);
-      });
-    });
-
-    var ctx = { account: res.account, sheet: sheet, headers: headers };
+    }  
     return response().html(server.render('sheet-map', ctx)).pipe(res);
   });
 });
