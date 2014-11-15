@@ -1,0 +1,15 @@
+{
+  "name": "explore-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "flatsheet": "flatsheet",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "flatsheet-server": "^0.2.4"
+  }
+}
