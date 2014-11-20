@@ -10,6 +10,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "explore-map": "^1.1.0",
     "flatsheet": "^1.1.1",
     "flatsheet-server": "^0.2.5"
   }

@@ -4,3 +4,4 @@ npm-debug.log
 tmp
 data
 .env
+import-data.js

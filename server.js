@@ -1,4 +1,5 @@
 var response = require('response');
+var map = require('explore-map');
 var server = require('flatsheet-server')({
   site: {
     title: 'Explore.js',
@@ -41,8 +42,9 @@ server.route('/sheet/map/:id', function (req, res, opts) {
     if (err) {
       res.writeHead(302, { 'Location': '/' });
       return res.end();
-    }  
-    return response().html(server.render('sheet-map', ctx)).pipe(res);
+    }
+    
+    return response().html(map).pipe(res);
   });
 });
 
